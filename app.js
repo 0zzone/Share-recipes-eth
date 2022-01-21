@@ -21,7 +21,244 @@ app.use(express.urlencoded({
     
 // Function
 const Contract = () => {
-  return new web3.eth.Contract(process.env.ABI, process.env.CONTRACT_ADDRESS);
+  return new web3.eth.Contract([
+    {
+      "inputs": [],
+      "name": "getNombreRecettes",
+      "outputs": [
+        {
+          "internalType": "uint256",
+          "name": "",
+          "type": "uint256"
+        }
+      ],
+      "stateMutability": "view",
+      "type": "function",
+      "constant": true
+    },
+    {
+      "inputs": [
+        {
+          "internalType": "uint256",
+          "name": "_id",
+          "type": "uint256"
+        }
+      ],
+      "name": "getRecette",
+      "outputs": [
+        {
+          "components": [
+            {
+              "internalType": "string",
+              "name": "name",
+              "type": "string"
+            },
+            {
+              "internalType": "uint256",
+              "name": "time",
+              "type": "uint256"
+            },
+            {
+              "internalType": "uint256",
+              "name": "nombreIngredients",
+              "type": "uint256"
+            },
+            {
+              "internalType": "string[]",
+              "name": "ingredients",
+              "type": "string[]"
+            },
+            {
+              "internalType": "enum Recette.Difficulty",
+              "name": "difficulty",
+              "type": "uint8"
+            }
+          ],
+          "internalType": "struct Recette.infosRecette",
+          "name": "",
+          "type": "tuple"
+        }
+      ],
+      "stateMutability": "view",
+      "type": "function",
+      "constant": true
+    },
+    {
+      "inputs": [
+        {
+          "internalType": "uint256",
+          "name": "_id",
+          "type": "uint256"
+        }
+      ],
+      "name": "getDifficulty",
+      "outputs": [
+        {
+          "internalType": "enum Recette.Difficulty",
+          "name": "",
+          "type": "uint8"
+        }
+      ],
+      "stateMutability": "view",
+      "type": "function",
+      "constant": true
+    },
+    {
+      "inputs": [
+        {
+          "internalType": "uint256",
+          "name": "_id",
+          "type": "uint256"
+        }
+      ],
+      "name": "getTime",
+      "outputs": [
+        {
+          "internalType": "uint256",
+          "name": "",
+          "type": "uint256"
+        }
+      ],
+      "stateMutability": "view",
+      "type": "function",
+      "constant": true
+    },
+    {
+      "inputs": [
+        {
+          "internalType": "uint256",
+          "name": "_id",
+          "type": "uint256"
+        }
+      ],
+      "name": "getIngredients",
+      "outputs": [
+        {
+          "internalType": "string[]",
+          "name": "",
+          "type": "string[]"
+        }
+      ],
+      "stateMutability": "view",
+      "type": "function",
+      "constant": true
+    },
+    {
+      "inputs": [
+        {
+          "internalType": "string[]",
+          "name": "_ingredients",
+          "type": "string[]"
+        },
+        {
+          "internalType": "uint256",
+          "name": "_nombreIngredients",
+          "type": "uint256"
+        }
+      ],
+      "name": "addIngredients",
+      "outputs": [],
+      "stateMutability": "nonpayable",
+      "type": "function"
+    },
+    {
+      "inputs": [
+        {
+          "internalType": "string",
+          "name": "_name",
+          "type": "string"
+        },
+        {
+          "internalType": "uint256",
+          "name": "_time",
+          "type": "uint256"
+        },
+        {
+          "internalType": "uint256",
+          "name": "_difficulty",
+          "type": "uint256"
+        }
+      ],
+      "name": "addRecette",
+      "outputs": [],
+      "stateMutability": "nonpayable",
+      "type": "function"
+    },
+    {
+      "inputs": [
+        {
+          "internalType": "uint256",
+          "name": "_id",
+          "type": "uint256"
+        }
+      ],
+      "name": "getRecetteName",
+      "outputs": [
+        {
+          "internalType": "string",
+          "name": "",
+          "type": "string"
+        }
+      ],
+      "stateMutability": "view",
+      "type": "function",
+      "constant": true
+    },
+    {
+      "inputs": [],
+      "name": "getAllRecettes",
+      "outputs": [
+        {
+          "components": [
+            {
+              "internalType": "string",
+              "name": "name",
+              "type": "string"
+            },
+            {
+              "internalType": "uint256",
+              "name": "time",
+              "type": "uint256"
+            },
+            {
+              "internalType": "uint256",
+              "name": "nombreIngredients",
+              "type": "uint256"
+            },
+            {
+              "internalType": "string[]",
+              "name": "ingredients",
+              "type": "string[]"
+            },
+            {
+              "internalType": "enum Recette.Difficulty",
+              "name": "difficulty",
+              "type": "uint8"
+            }
+          ],
+          "internalType": "struct Recette.infosRecette[]",
+          "name": "",
+          "type": "tuple[]"
+        }
+      ],
+      "stateMutability": "view",
+      "type": "function",
+      "constant": true
+    },
+    {
+      "inputs": [
+        {
+          "internalType": "uint256",
+          "name": "_id",
+          "type": "uint256"
+        }
+      ],
+      "name": "deleteRecette",
+      "outputs": [],
+      "stateMutability": "nonpayable",
+      "type": "function"
+    }
+  ], "0x3d227DaE29cfEd222cfE19A0A6c4B6caFa7B39a0");
 }
 
 // Routes
@@ -96,8 +333,8 @@ app.post('/addPost', async (req, res) => {
 
 
     const contract = Contract();
-    await contract.methods.addRecette(name, time, difficulty).send({from: process.env.DEFAULT_ADDRESS, gas:3000000});
-    await contract.methods.addIngredients(tab_ingr, tab_ingr.length).send({from: process.env.DEFAULT_ADDRESS, gas:3000000});
+    await contract.methods.addRecette(name, time, difficulty).send({from: "0xD5b801C9CFf16243c1e7112285d5698E476e73a7", gas:3000000});
+    await contract.methods.addIngredients(tab_ingr, tab_ingr.length).send({from: "0xD5b801C9CFf16243c1e7112285d5698E476e73a7", gas:3000000});
     
     res.redirect('/');
 });
@@ -105,7 +342,7 @@ app.post('/addPost', async (req, res) => {
 
 app.post('/delete', async (req, res) => {
   const contract = Contract();
-  await contract.methods.deleteRecette(req.body.id).send({from: process.env.DEFAULT_ADDRESS, gas:3000000});
+  await contract.methods.deleteRecette(req.body.id).send({from: "0xD5b801C9CFf16243c1e7112285d5698E476e73a7", gas:3000000});
   res.redirect('/');
 });
 

@@ -9,7 +9,7 @@ Cette micro application web vous permet de stocker vos recettes de cuisine direc
 1) Installez truffle `npm install -g truffle`
 2) Rendez-vous dans le dossier du projet
 3) Déployez les contrats intelligents `truffle migrate --reset`
-4) Récupérez `contract_address` depuis votre terminal du contrat `Recette` et copiez coller cela dans votre `.env` à `CONTRACT_ADDRESS`
+4) Récupérez `contract_address` depuis votre terminal du contrat `Recette` et coller cela dans le fichier `app.js` à la ligne `261`
 5) Récupérez l'ABI du contrat dans `Solidity/build/contracts/Recette.js` et copiez le dans votre `.env` à `ABI`
 6) Lancez Ganache
 7) Tapez dans votre terminal `node app.js`
