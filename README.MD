@@ -1,4 +1,4 @@
-# 🍔 Partage de recettes sur la blockchain
+# Partage de recettes sur la blockchain
 
 ## ⭐ Explications
 
