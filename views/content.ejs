@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="../../css/content.css" />
+    <title>Contenu de la recette</title>
+</head>
+<body>
+
+
+    <header>
+        <h1><%= content.name %></h1>
+        <a href="/" class="ajouter">Retour</a>
+    </header>
+    
+<h3>Temps total: <%= content.time %> min</h3>
+<% 
+
+    if(content.difficulty == 0){
+        %>
+            <p>Difficulté: Facile</p>
+        <%
+    }
+    else if(content.difficulty == 1){
+        %>
+            <p>Difficulté: Moyen</p>
+        <%
+    }
+    else{
+        %>
+            <p>Difficulté: Difficile</p>
+        <%
+    }
+
+
+    if(content.ingredients.length > 0){
+        %>
+            <p class="ingr">Ingrédients: <%= content.ingredients %></p>
+        <%
+    }
+    else{
+        %>
+            <p class="ingr">Aucun ingrédient n'a été ajouté !</p> 
+        <%
+    }
+%> 
+
+
+<form method="POST" action="/delete">
+    <input type="hidden" name="id" value="<%= id_recette %>" />
+    <input type="submit" class="delete" value="Supprimer cette recette" />
+</form>
+
+<br>
+<br>
+<br>
+<br>
+<br>
+
+<h1 class="h1">Quelques images</h1>
+<div class="allPhotos">
+
+    <%
+        for(var item of allResults){
+            %>
+                <img src="<%= item.url %>" class="image" />
+            <%
+        }
+
+    %> 
+</div>
+
+
+<br>
+
+<p class="infos">Ces images ont été cherchées automatiquement grâce à une API. Il est possible que certaines images ne correspondent pas ;)</p>
+
+<br>
+<br>
+
+    
+</body>
+</html>

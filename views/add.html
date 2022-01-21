@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ajout d'une recette</title>
+    <link rel="stylesheet" href="css/add.css" />
+</head>
+<body>
+
+
+    <header>
+        <h1 class="title">Share recipes</h1>
+        <a href="/" class="ajouter">Retour</a>
+    </header>
+
+    <form method="post" action="/addPost">
+        <h1 class="title2">Ajout d'une recette</h1>
+        <input type="text" name="name" placeholder="Nom de la recette" />
+            <br>
+            <br>
+        <input type="number" name="time" placeholder="Temps de préparation" />
+            <br>
+            <br>
+        <input type="text" name="ingredients" placeholder="Ingrédients (séparés par des virgules)" />
+            <br>
+            <br>
+        <p>Difficulté</p>
+        <select id="diff" name="difficulty">
+            <option value="0">Facile</option>
+            <option value="1">Moyen</option>
+            <option value="2">Difficile</option>
+        </select>
+
+            <br>
+            <br>
+            <br>
+
+        <input type="submit" value="Ajouter" class="submit" />
+    </form>
+    
+</body>
+</html>

@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Gestion de recettes</title>
+    <link rel="stylesheet" href="css/index.css" />
+</head>
+<body>
+    
+    <header>
+        <h1>Liste des recettes</h1>
+        <a href="/add" class="ajouter">Ajouter une recette</a>
+    </header>
+    
+    <div class="all1">
+        <h1 class="title">Stocker et lisez vos<br>recettes sur la Blockchain.</h1>
+        <img src="img/recipe.png" class="img" />
+    </div>
+
+
+    <div class="all2">
+        <%
+            if(allRecettes.length > 0){
+                %>
+                    <h1 class="title-list">Liste des recettes</h1>
+                    <div class="infos-top">
+                        <p class="name-top">Nom de la recette</p>
+                        <p class="time-top">Temps</p>
+                        <p class="diff-top">Difficulté</p>
+                    </div>
+
+                <%
+                for(var recette of allRecettes){
+                    if(recette.name.length > 0){
+                        %>
+                            <a href="/content/<%= recette.id %>">
+                                <div class="infos">
+                                    <p class="name"><%= recette.name %></p>
+                                    <p class="time"><%= recette.time %> min</p>
+                                    <% 
+                                        if(recette.difficulty == 0){
+                                            %>
+                                                <p class="diff">Facile</p>
+                                            <%
+                                        }
+                                        else if(recette.difficulty == 1){
+                                            %>
+                                                <p class="diff">Moyen</p>
+                                            <%
+                                        }
+                                        else{
+                                            %>
+                                                <p class="diff">Difficile</p>
+                                            <%
+                                        }
+                                    %> 
+                                </div>
+                            </a>
+                        <%
+                    }
+                }
+            }
+            else{
+                %>
+                    <h1 class="error">Aucune recette disponible ;(</h1>
+                    <a href="/add" class="ajouter2">Ajouter une recette</a>
+                <%
+            }
+        %>
+    </div>
+
+    <footer>
+        <a href="https://ozzone.me" target="_blank" class="link">$matteo</a>
+    </footer>
+
+
+</body>
+</html>
