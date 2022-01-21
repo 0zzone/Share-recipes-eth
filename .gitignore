@@ -1,5 +1,2 @@
-# env file
-.env
-
-# Smart contract
+node_modules/*
 Solidity/build/*
