@@ -1,10 +1,10 @@
-# Partage de recettes sur la blockchain
+# 🍔 Partage de recettes sur la blockchain
 
-## Explications
+## ⭐ Explications
 
 Cette micro application web vous permet de stocker vos recettes de cuisine directement sur la blockchain Ethereum. Vous renseignez le nom, la durée, les aliments ainsi que la diffculté. Lors de l'affichage d'une recette, ce que vous avez renseigné s'affiche mais effectue une recherche d'image automatique sur internet pour vous afficher des images grâce à un mot clé (le nom de la recette). Vous avez la possibilité de supprimer une recette.
 
-## Comment lancer l'application ?
+## ⭐ Comment lancer l'application ?
 
 1) Installez truffle `npm install -g truffle`
 2) Rendez-vous dans le dossier du projet
